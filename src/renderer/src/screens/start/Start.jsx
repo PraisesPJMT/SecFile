@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import Logo from '../../components/svg/Logo'
 import Header from '../../components/header/Header'
 
@@ -33,12 +35,12 @@ const Start = () => {
         </section>
         <section className="actions">
           <div className="screen">
-            <a href="#" className="secondary-btn">
+            <Link to="/" className="secondary-btn">
               Decrypt File
-            </a>
-            <a href="#" className="primary-btn">
+            </Link>
+            <Link to="/" className="primary-btn">
               Encrypt File
-            </a>
+            </Link>
           </div>
         </section>
       </main>

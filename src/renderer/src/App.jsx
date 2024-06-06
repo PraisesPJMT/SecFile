@@ -1,12 +1,12 @@
+import { createBrowserRouter} from 'react-router-dom'
+
 import Start from './screens/start/Start'
 
-/**
- * Renders the main application component.
- *
- * @return {JSX.Element} The rendered Start component.
- */
-const App = () => {
-  return <Start />
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Start />
+  }
+])
 
-export default App
+export default router

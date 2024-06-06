@@ -159,7 +159,8 @@ nav ul li a {
   text-align: start;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--secondary-color);
 }
 

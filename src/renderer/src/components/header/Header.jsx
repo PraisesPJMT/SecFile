@@ -4,6 +4,7 @@ import Menu from '../svg/Menu'
 import Close from '../svg/Close'
 
 import './header.css'
+import { Link, NavLink } from 'react-router-dom'
 
 /**
  * Renders the header component.
@@ -29,43 +30,43 @@ const Header = () => {
 
   return (
     <header>
-      <a href="#" className="logo">
+      <Link to="/" className="logo">
         <Logo />
         <span>StartOver</span>
-      </a>
+      </Link>
 
       <nav className={`menu ${isOpen ? 'open' : ''}`}>
         <ul>
           <li className="start">
-            <a href="#" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               <span className="menu-logo">
                 <Logo />
               </span>
               <span>Start Over</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               Encrypt File
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="#" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               Decrypt File
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="#" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               Manage Keys
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="#" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               About App
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
