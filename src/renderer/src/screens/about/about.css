@@ -1,0 +1,70 @@
+@import '../../assets/base.css';
+
+section.about {
+  margin: auto;
+  background: var(--primary-color);
+  color: var(--text-color);
+  flex-direction: column;
+  border-radius: 30px;
+  position: relative;
+}
+
+section.about .about-logo {
+  background: var(--primary-color);
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: -75px;
+  left: calc(50% - 75px);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.about .about-logo svg {
+  width: 100px;
+  height: 100px;
+  fill: var(--secondary-color);
+}
+
+section.about h1 {
+  margin-top: 4rem;
+  font-weight: 800;
+}
+
+section.about h5 {
+  /* margin: 0.5rem auto; */
+  font-weight: 700;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+section.about hr {
+  width: 40%;
+  margin: 1rem;
+}
+
+section.about p {
+  font-size: 0.9rem;
+}
+
+section.about p span {
+  color: var(--secondary-color);
+}
+
+section.about a {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+section.about a svg {
+  width: 20px;
+  height: 20px;
+}
+
+section.about a svg g {
+  fill: var(--primary-color);
+}

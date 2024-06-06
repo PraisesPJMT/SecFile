@@ -1,5 +1,9 @@
 @import '../../assets/base.css';
 
+header {
+  z-index: 10;
+}
+
 header .logo {
   display: flex;
   justify-content: center;
