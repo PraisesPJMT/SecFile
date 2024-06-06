@@ -28,8 +28,9 @@ const Start = () => {
             </h2>
 
             <p>
-              SecFile takes your files and adds AES-256-GCM encryption to it. With encryption, you
-              know your file is incredibly secure and that only the right person can access it.
+              <span>SecFile</span> takes your files and adds <span>AES-256-GCM</span> encryption to
+              it. With encryption, you know your file is incredibly secure and that only the right
+              person can access it.
             </p>
           </div>
         </section>

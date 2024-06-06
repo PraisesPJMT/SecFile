@@ -17,18 +17,20 @@
   fill: var(--secondary-color);
 }
 
+.headline p span {
+  color: var(--secondary-color);
+}
+
 .action .screen {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 2rem;
 }
 
 .actions {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
 }
 
 .actions a {

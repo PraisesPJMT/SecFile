@@ -12,8 +12,9 @@
 
 main {
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }
@@ -35,6 +36,8 @@ p {
 .screen {
   width: 100%;
   max-width: 450px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,22 +59,30 @@ p {
 }
 
 a.primary-btn,
-a.secondary-btn {
+a.secondary-btn,
+a.tertiary-btn {
   padding: 0.5rem;
   border-radius: 0.2rem;
   font-weight: 600;
   text-align: center;
-  border: 2.5px solid var(--primary-color);
 }
 
 a.primary-btn {
   background-color: var(--primary-color);
   color: var(--text-color);
+  border: 2.5px solid var(--primary-color);
 }
 
 a.secondary-btn {
   background-color: transparent;
   color: var(--primary-color);
+  border: 2.5px solid var(--primary-color);
+}
+
+a.tertiary-btn {
+  background-color: var(--secondary-dark-color);
+  color: var(--primary-color);
+  border: 2.5px solid var(--secondary-dark-color);
 }
 
 @media (max-width: 720px) {

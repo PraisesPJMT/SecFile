@@ -64,7 +64,7 @@ const Header = () => {
           </li>
 
           <li>
-            <NavLink to="/" onClick={closeMenu}>
+            <NavLink to="/about" onClick={closeMenu}>
               About App
             </NavLink>
           </li>
