@@ -1,0 +1,36 @@
+@import '../../assets/base.css';
+
+.headline .screen {
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.headline h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headline h1 svg {
+  width: 40px;
+  height: 40px;
+  fill: var(--secondary-color);
+}
+
+.action .screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.actions a {
+  margin: 2rem;
+}

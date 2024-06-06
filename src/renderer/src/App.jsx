@@ -1,5 +1,12 @@
+import Start from './screens/start/Start'
+
+/**
+ * Renders the main application component.
+ *
+ * @return {JSX.Element} The rendered Start component.
+ */
 const App = () => {
-  return <h1>SecFile</h1>
+  return <Start />
 }
 
 export default App
