@@ -46,7 +46,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/" onClick={closeMenu}>
+            <NavLink to="/encrypt" onClick={closeMenu}>
               Encrypt File
             </NavLink>
           </li>

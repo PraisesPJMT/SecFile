@@ -58,28 +58,32 @@ p {
   flex-direction: column;
 }
 
-a.primary-btn,
-a.secondary-btn,
-a.tertiary-btn {
-  padding: 0.5rem;
+.primary-btn,
+.secondary-btn,
+.tertiary-btn {
+  padding: 0.4rem 1rem;
   border-radius: 0.2rem;
   font-weight: 600;
   text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-a.primary-btn {
+.primary-btn {
   background-color: var(--primary-color);
   color: var(--text-color);
   border: 2.5px solid var(--primary-color);
 }
 
-a.secondary-btn {
+.secondary-btn {
   background-color: transparent;
   color: var(--primary-color);
   border: 2.5px solid var(--primary-color);
 }
 
-a.tertiary-btn {
+.tertiary-btn {
   background-color: var(--secondary-dark-color);
   color: var(--primary-color);
   border: 2.5px solid var(--secondary-dark-color);
