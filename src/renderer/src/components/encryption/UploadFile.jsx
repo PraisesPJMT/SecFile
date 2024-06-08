@@ -10,10 +10,11 @@ import FileUpload from '../svg/FileUpload'
  *
  * @param {Object} props - The component props.
  * @param {File} props.file - The uploaded file.
+ * @param {string} props.title - The title of the component.
  * @param {Function} props.setData - A function to update the component state.
  * @return {JSX.Element} The rendered component.
  */
-const UploadFile = ({ file, setData }) => {
+const UploadFile = ({ file, title, setData }) => {
   const [errorMessage, setErrorMessage] = useState()
 
   /**
@@ -40,7 +41,7 @@ const UploadFile = ({ file, setData }) => {
   return (
     <>
       <div className="encrypt-header">
-        <h6>Upload Plain File</h6>
+        <h6>{title}</h6>
       </div>
 
       <div className="encrypt-body">
@@ -72,6 +73,7 @@ UploadFile.propTypes = {
     type: PropTypes.string.isRequired,
     size: PropTypes.number.isRequired
   }),
+  title: PropTypes.string.isRequired,
   setData: PropTypes.func.isRequired
 }
 

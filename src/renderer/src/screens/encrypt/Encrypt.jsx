@@ -26,10 +26,10 @@ const Encrypt = () => {
   const [data, setData] = useState(DATA)
 
   const { step, next, back, reset, currentStep, isFirstStep, isLastStep } = useEncryption([
-    <UploadFile key={0} {...data} setData={setData} />,
-    <InsertKey key={1} {...data} setData={setData} />,
-    <SaveFile key={2} {...data} setData={setData} />,
-    <Finish key={3} />
+    <UploadFile key={0} {...data} setData={setData} title="Upload Plain File" />,
+    <InsertKey key={1} {...data} setData={setData} title="Assign Encryption Key" />,
+    <SaveFile key={2} {...data} setData={setData} title="Save Encrypted File" />,
+    <Finish key={3} title="Finish Encryption" />
   ])
 
   /**

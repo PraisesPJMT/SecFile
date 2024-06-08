@@ -7,12 +7,13 @@ import FileDownload from '../svg/FileDownload'
  *
  * @param {Object} props - The component props.
  * @param {File} props.file - The encrypted file to save.
+ * @param {string} props.title - The title of the component.
  * @param {boolean} props.saved - Indicates if the file has been saved.
  * @param {string} props.saveError - The error message if saving the file fails.
  * @param {Function} props.setData - A function to update the component state.
  * @return {JSX.Element} The rendered component.
  */
-const SaveFile = ({ file, saved, saveError, setData }) => {
+const SaveFile = ({ file, saved, title, saveError, setData }) => {
   /**
    * Saves the file with a custom name as a downloadable file.
    *
@@ -33,7 +34,7 @@ const SaveFile = ({ file, saved, saveError, setData }) => {
   return (
     <>
       <div className="encrypt-header">
-        <h6>Save Encrypted File</h6>
+        <h6>{title}</h6>
       </div>
       <div className="encrypt-body">
         <div htmlFor="enc-file" className="enc-file">
@@ -58,6 +59,7 @@ SaveFile.propTypes = {
   }).isRequired,
   saved: PropTypes.bool.isRequired,
   saveError: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   setData: PropTypes.func.isRequired
 }
 

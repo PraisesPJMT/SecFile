@@ -9,11 +9,12 @@ import PropTypes from 'prop-types'
  *
  * @param {Object} props - The properties passed to the component.
  * @param {string} props.fileKey - The current file key.
+ * @param {string} props.title - The title of the component.
  * @param {string|null} props.keyError - The error message for the key.
  * @param {Function} props.setData - The function to update the data state.
  * @return {JSX.Element} The rendered component.
  */
-const InsertKey = ({ fileKey, keyError, setData }) => {
+const InsertKey = ({ fileKey, title, keyError, setData }) => {
   const [showPassword, setShowPassword] = useState(false)
 
   /**
@@ -39,7 +40,7 @@ const InsertKey = ({ fileKey, keyError, setData }) => {
   return (
     <>
       <div className="encrypt-header">
-        <h6>Assign Encryption Key</h6>
+        <h6>{title}</h6>
       </div>
 
       <div className="encrypt-body">
@@ -69,6 +70,7 @@ const InsertKey = ({ fileKey, keyError, setData }) => {
 
 InsertKey.propTypes = {
   fileKey: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   keyError: PropTypes.string,
   setData: PropTypes.func.isRequired
 }
