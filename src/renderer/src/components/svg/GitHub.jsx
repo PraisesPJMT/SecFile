@@ -1,3 +1,8 @@
+/**
+ * Renders an SVG component of a GitHub icon.
+ *
+ * @return {JSX.Element} The SVG component.
+ */
 const GitHub = () => {
   return (
     <svg
