@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+
 import Logo from '../svg/Logo'
 import Menu from '../svg/Menu'
 import Close from '../svg/Close'
 
 import './header.css'
-import { Link, NavLink } from 'react-router-dom'
 
 /**
  * Renders the header component.
@@ -13,6 +14,29 @@ import { Link, NavLink } from 'react-router-dom'
  */
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const navs = [
+    // {
+    //   name: 'Start Over',
+    //   path: '/'
+    // },
+    {
+      name: 'Encrypt File',
+      path: '/encrypt'
+    },
+    {
+      name: 'Decrypt File',
+      path: '/decrypt'
+    },
+    // {
+    //   name: 'Manage Keys',
+    //   path: '/keys'
+    // },
+    {
+      name: 'About',
+      path: '/about'
+    }
+  ]
 
   /**
    * Toggles the value of `isOpen` by negating its current value.
@@ -45,29 +69,14 @@ const Header = () => {
               <span>Start Over</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/encrypt" onClick={closeMenu}>
-              Encrypt File
-            </NavLink>
-          </li>
 
-          <li>
-            <NavLink to="/" onClick={closeMenu}>
-              Decrypt File
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/" onClick={closeMenu}>
-              Manage Keys
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/about" onClick={closeMenu}>
-              About App
-            </NavLink>
-          </li>
+          {navs.map((nav) => (
+            <li key={nav.name}>
+              <NavLink to={nav.path} onClick={closeMenu}>
+                {nav.name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
 

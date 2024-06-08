@@ -15,21 +15,22 @@ import FileDownload from '../../components/svg/FileDownload'
 import InsertKey from '../../components/encryption/InsertKey'
 import UploadFile from '../../components/encryption/UploadFile'
 
-import './encrypt.css'
+import './decrypt.css'
 
 /**
- * Encrypt component.
+ * Renders the Decrypt component, which allows users to decrypt a file by uploading an encrypted file,
+ * providing a decryption key, and saving the decrypted file.
  *
- * @return {JSX.Element} The Encrypt component.
+ * @return {JSX.Element} The Decrypt component.
  */
-const Encrypt = () => {
+const Decrypt = () => {
   const [data, setData] = useState(DATA)
 
   const { step, next, back, reset, currentStep, isFirstStep, isLastStep } = useEncryption([
-    <UploadFile key={0} {...data} setData={setData} title="Upload Plain File" />,
-    <InsertKey key={1} {...data} setData={setData} title="Assign Encryption Key" />,
-    <SaveFile key={2} {...data} setData={setData} title="Save Encrypted File" />,
-    <Finish key={3} title="Finish Encryption" />
+    <UploadFile key={0} {...data} setData={setData} title="Upload Encrypted File" />,
+    <InsertKey key={1} {...data} setData={setData} title="Provide Decryption Key" />,
+    <SaveFile key={2} {...data} setData={setData} title="Save Decrypted File" />,
+    <Finish key={3} title="Finish Decryption" />
   ])
 
   /**
@@ -74,7 +75,7 @@ const Encrypt = () => {
               <Logo />
               SecFile
             </h1>
-            <h2>ENCRYPT FILE</h2>
+            <h2>DECRYPT FILE</h2>
           </div>
           <div className="encrypt-cover">
             <form onSubmit={handleSubmit} className="encrypt-box">
@@ -89,7 +90,7 @@ const Encrypt = () => {
 
                 <div className="item">
                   <Password />
-                  <span>Encryption Key</span>
+                  <span>Decryption Key</span>
                   <span className={`progress ${currentStep === 1 && 'active'}`}>
                     {data.file && data.fileKey.length > 0 && <Tick />}
                   </span>
@@ -97,7 +98,7 @@ const Encrypt = () => {
 
                 <div className="item">
                   <FileDownload />
-                  <span>Save Encrypted File</span>
+                  <span>Save Decrypted File</span>
                   <span className={`progress ${currentStep === 2 && 'active'}`}>
                     {data.file && data.fileKey.length > 0 && data.saved && <Tick />}
                   </span>
@@ -127,4 +128,4 @@ const Encrypt = () => {
   )
 }
 
-export default Encrypt
+export default Decrypt
