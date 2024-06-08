@@ -36,7 +36,7 @@ const Start = () => {
         </section>
         <section className="actions">
           <div className="screen">
-            <Link to="/" className="secondary-btn">
+            <Link to="/decrypt" className="secondary-btn">
               Decrypt File
             </Link>
             <Link to="/encrypt" className="primary-btn">
