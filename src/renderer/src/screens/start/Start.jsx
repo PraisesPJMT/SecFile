@@ -39,7 +39,7 @@ const Start = () => {
             <Link to="/" className="secondary-btn">
               Decrypt File
             </Link>
-            <Link to="/" className="primary-btn">
+            <Link to="/encrypt" className="primary-btn">
               Encrypt File
             </Link>
           </div>

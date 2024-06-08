@@ -5,13 +5,20 @@
 
 :root {
   --primary-color: #59316b;
+  --primary-color-2: #633e75;
   --primary-color-light: #f9e4e7 linear-gradient(90deg, #f9e4e7 0, #fbf4ef);
   --secondary-color: #ffbf00;
+  --secondary-trans-color: #ffbf0022;
   --secondary-dark-color: #e1a902;
   --text-color: #e6d5ee;
+  --text-trans-color: #e6d5ee55;
   --gray-color: #e5e5e5;
   --dark-gray-color: #625f5b;
   --dark-gray-trans-color: #625f5baa;
+  --main-radius: 10px;
+  --box-shadow: 0px 8px 16px rgba(89, 49, 107, 0.4), 8px 0px 16px rgba(89, 49, 107, 0.4),
+    -8px 0px 16px rgba(89, 49, 107, 0.4);
+  --box-shadow-2: 5px 0px 5px rgba(89, 49, 107, 0.3);
 }
 
 *,
