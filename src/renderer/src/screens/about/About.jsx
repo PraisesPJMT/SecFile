@@ -1,15 +1,18 @@
 import { UAParser } from 'ua-parser-js'
-import Header from '../../components/header/Header'
+import useUtil from '../../hook/useUtil'
 import Logo from '../../components/svg/Logo'
+import GitHub from '../../components/svg/GitHub'
+import Header from '../../components/header/Header'
 
 import './about.css'
-import GitHub from '../../components/svg/GitHub'
 
 const About = () => {
   const userAgent = navigator.userAgent
   const parser = new UAParser(userAgent)
   const os = parser.getOS()
   const device = parser.getDevice()
+
+  const { openRepository } = useUtil()
 
   return (
     <>
@@ -36,15 +39,11 @@ const About = () => {
             developers and security enthusiasts alike. Whether you&apos;re a seasoned cryptographer
             or a curious coder, your contributions can help make <span>SecFile</span> even better.
           </p>
-          <a
-            href="https://github.com/PraisesPJMT/secfile/"
-            className="tertiary-btn"
-            target="_blank"
-            rel="noreferrer"
-          >
+
+          <button className="tertiary-btn" type="button" onClick={openRepository}>
             <GitHub />
-            Code Base
-          </a>
+            CodeBase
+          </button>
         </section>
       </main>
     </>

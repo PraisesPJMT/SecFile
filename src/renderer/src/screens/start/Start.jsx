@@ -36,10 +36,10 @@ const Start = () => {
         </section>
         <section className="actions">
           <div className="screen">
-            <Link to="/decrypt" className="secondary-btn">
+            <Link to="/decrypt" className="secondary-btn main-btn">
               Decrypt File
             </Link>
-            <Link to="/encrypt" className="primary-btn">
+            <Link to="/encrypt" className="primary-btn main-btn">
               Encrypt File
             </Link>
           </div>

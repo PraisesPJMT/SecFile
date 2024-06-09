@@ -1,8 +1,16 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { scryptSync, createCipheriv, createDecipheriv } from 'crypto'
+
+import fs from 'fs'
 import icon from '../../resources/icon.png?asset'
 
+/**
+ * Creates a new browser window and sets up event listeners and window configurations.
+ *
+ * @return {void}
+ */
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -50,7 +58,7 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  // ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
 
@@ -72,3 +80,115 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+let algorithm = 'aes-192-cbc'
+let iv = Buffer.alloc(16, 0)
+
+/**
+ * Generates a cryptographic key using the scrypt algorithm.
+ *
+ * @param {string} passKey - The password used to generate the key.
+ * @return {Buffer} The generated cryptographic key.
+ */
+const generateKey = (passKey) => scryptSync(passKey, 'salt', 24)
+
+/**
+ * Removes the encryption extension from a file name if it exists.
+ *
+ * @param {string} fileName - The file name to remove the extension from.
+ * @return {string} The file name without the encryption extension, or the original file name if no extension is present.
+ */
+const removeEncryptionExtension = (fileName) => {
+  const lastDotIndex = fileName.lastIndexOf('.')
+  if (lastDotIndex !== -1) {
+    const extension = fileName.slice(lastDotIndex)
+    if (extension === '.enc') {
+      return fileName.slice(0, lastDotIndex)
+    }
+  }
+  return fileName
+}
+
+/**
+ * Adds the '.enc' extension to the given file name.
+ *
+ * @param {string} fileName - The file name to add the extension to.
+ * @return {string} The file name with the '.enc' extension.
+ */
+const addEncryptionExtension = (fileName) => {
+  return fileName + '.enc'
+}
+
+/**
+ * Opens the repository URL in the default web browser.
+ *
+ * @return {Promise<void>} A promise that resolves when the repository URL is opened.
+ */
+ipcMain.handle('openRepository', () => {
+  shell.openExternal('https://github.com/PraisesPJMT/SecFile/')
+})
+
+/**
+ * Encrypts a file using the provided passKey.
+ *
+ * @param {Event} event - The IPC event object.
+ * @param {Object} args - The arguments object containing the file and passKey.
+ * @param {string} args.file - The path of the file to be encrypted.
+ * @param {string} args.passKey - The passKey used to encrypt the file.
+ * @return {Promise<void>} A promise that resolves when the file is encrypted.
+ */
+ipcMain.handle('encryptFile', (event, args) => {
+  const { file, passKey } = args
+
+  let key = generateKey(passKey)
+
+  let encryptedFile
+
+  let output = addEncryptionExtension(file)
+
+  const inputFileStream = fs.ReadStream(file)
+  const outputFileStream = fs.createWriteStream(output)
+
+  const cypher = createCipheriv(algorithm, key, iv)
+
+  inputFileStream.on('data', (data) => {
+    encryptedFile = cypher.update(data)
+    outputFileStream.write(encryptedFile)
+  })
+
+  inputFileStream.on('end', () => {
+    outputFileStream.end()
+  })
+})
+
+/**
+ * Decrypts a file using the provided passKey.
+ *
+ * @param {Event} event - The IPC event object.
+ * @param {Object} args - The arguments object containing the file and passKey.
+ * @param {string} args.file - The path of the file to be decrypted.
+ * @param {string} args.passKey - The passKey used to decrypt the file.
+ * @return {Promise<void>} A promise that resolves when the file is decrypted.
+ */
+ipcMain.handle('decryptFile', (event, args) => {
+  const { file, passKey } = args
+
+  let key = generateKey(passKey)
+
+  let decryptedFile
+
+  let output = removeEncryptionExtension(file)
+
+  const inputFileStream = fs.ReadStream(file)
+  const outputFileStream = fs.createWriteStream(output)
+
+  const decipher = createDecipheriv(algorithm, key, iv)
+
+  inputFileStream.on('data', (data) => {
+    decryptedFile = decipher.update(data)
+    outputFileStream.write(decryptedFile)
+  })
+
+  inputFileStream.on('end', () => {
+    outputFileStream.end()
+  })
+})

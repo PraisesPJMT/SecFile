@@ -11,10 +11,11 @@ import FileUpload from '../svg/FileUpload'
  * @param {Object} props - The component props.
  * @param {File} props.file - The uploaded file.
  * @param {string} props.title - The title of the component.
+ * @param {string} props.mode - The encryption mode.
  * @param {Function} props.setData - A function to update the component state.
  * @return {JSX.Element} The rendered component.
  */
-const UploadFile = ({ file, title, setData }) => {
+const UploadFile = ({ file, title, setData, mode }) => {
   const [errorMessage, setErrorMessage] = useState()
 
   /**
@@ -26,9 +27,10 @@ const UploadFile = ({ file, title, setData }) => {
   const handleFileUpload = (event) => {
     const file = event.target.files[0]
     const name = event.target.name
+
     if (!file) return
 
-    if (!validateFile(file)) {
+    if (!validateFile(file, mode)) {
       setErrorMessage('Invalid file type!')
       setData((prev) => ({ ...prev, [name]: null }))
       return
@@ -49,7 +51,6 @@ const UploadFile = ({ file, title, setData }) => {
           <File />
           {file && <p>{file.name}</p>}
           {errorMessage && <p className="error">{errorMessage}</p>}
-
           <input
             name="file"
             type="file"
@@ -57,9 +58,10 @@ const UploadFile = ({ file, title, setData }) => {
             required={file ? false : true}
             onChange={handleFileUpload}
           />
-          <span>
+
+          <span className={file ? 'pass' : ''}>
             <FileUpload />
-            Upload File
+            {file ? 'File Uploaded' : 'Upload File'}
           </span>
         </label>
       </div>
@@ -74,6 +76,7 @@ UploadFile.propTypes = {
     size: PropTypes.number.isRequired
   }),
   title: PropTypes.string.isRequired,
+  mode: PropTypes.string.isRequired,
   setData: PropTypes.func.isRequired
 }
 
