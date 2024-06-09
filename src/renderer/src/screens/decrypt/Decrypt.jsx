@@ -72,7 +72,7 @@ const Decrypt = () => {
 
     if (currentStep === 2) {
       if (!data.saved) {
-        setData((prev) => ({ ...prev, saveError: 'Please save the encrypted file first' }))
+        setData((prev) => ({ ...prev, saveError: 'Please save the decrypted file first' }))
         return
       }
 

@@ -36,3 +36,14 @@
 .actions a {
   margin: 2rem;
 }
+
+.actions a.main-btn {
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s ease-in-out;
+}
+
+.actions a.main-btn:hover {
+  opacity: 1;
+  box-shadow: 5px 5px 10px rgba(89, 49, 107, 0.3);
+}

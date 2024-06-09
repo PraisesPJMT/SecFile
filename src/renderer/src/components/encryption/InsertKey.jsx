@@ -3,6 +3,7 @@ import Key from '../svg/Key'
 import Hide from '../svg/Hide'
 import Show from '../svg/Show'
 import PropTypes from 'prop-types'
+import { validatePassword } from '../../utils/helpers'
 
 /**
  * Renders a component for inserting a key.
@@ -56,8 +57,14 @@ const InsertKey = ({ fileKey, title, keyError, setData }) => {
               min={4}
               onChange={handlePasswordChange}
               required
+              className={!validatePassword(fileKey) ? 'pass' : ''}
             />
-            <button type="button" onClick={handleToggleShowPassword} aria-label="Show Password">
+            <button
+              className={!validatePassword(fileKey) ? 'pass' : ''}
+              type="button"
+              onClick={handleToggleShowPassword}
+              aria-label="Show Password"
+            >
               {showPassword ? <Hide /> : <Show />}
             </button>
           </span>

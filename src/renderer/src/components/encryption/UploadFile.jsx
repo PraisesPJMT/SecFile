@@ -51,7 +51,6 @@ const UploadFile = ({ file, title, setData, mode }) => {
           <File />
           {file && <p>{file.name}</p>}
           {errorMessage && <p className="error">{errorMessage}</p>}
-
           <input
             name="file"
             type="file"
@@ -59,9 +58,10 @@ const UploadFile = ({ file, title, setData, mode }) => {
             required={file ? false : true}
             onChange={handleFileUpload}
           />
-          <span>
+
+          <span className={file ? 'pass' : ''}>
             <FileUpload />
-            Upload File
+            {file ? 'File Uploaded' : 'Upload File'}
           </span>
         </label>
       </div>

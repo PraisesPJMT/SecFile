@@ -194,7 +194,9 @@ main.encrypt .encrypt-body div.enc-file button {
   cursor: pointer;
 }
 
-main.encrypt .encrypt-body div.enc-file button.saved {
+main.encrypt .encrypt-body div.enc-file button.saved,
+main.encrypt .encrypt-body label.file span.pass,
+main.encrypt .encrypt-body label.password button.pass {
   color: var(--text-color);
   background: green;
 }
@@ -210,8 +212,14 @@ main.encrypt .encrypt-body div.enc-file button svg path {
   stroke: var(--primary-color);
 }
 
-main.encrypt .encrypt-body div.enc-file button.saved svg path {
+main.encrypt .encrypt-body div.enc-file button.saved svg path,
+main.encrypt .encrypt-body label.file span.pass svg path,
+main.encrypt .encrypt-body label.password button.pass svg path {
   stroke: var(--text-color);
+}
+
+main.encrypt .encrypt-body label.password button.pass svg g {
+  fill: var(--text-color);
 }
 
 main.encrypt .encrypt-body label.file input {
@@ -233,8 +241,19 @@ main.encrypt .encrypt-body label.password input {
   border: 1px solid var(--secondary-color);
 }
 
+main.encrypt .encrypt-body label.password input.pass {
+  color: var(--primary-color);
+  background: rgba(226, 242, 226, 0.745);
+  border: 1px solid green;
+}
+
 main.encrypt .encrypt-body label.password input:focus {
   border: 1px solid var(--secondary-color);
+}
+
+main.encrypt .encrypt-body label.password input.pass:focus {
+  border: 2px solid green;
+  outline-color: green;
 }
 
 main.encrypt .encrypt-body label.password > span {
@@ -244,11 +263,18 @@ main.encrypt .encrypt-body label.password > span {
 main.encrypt .encrypt-body label.password > span button {
   background: var(--secondary-color);
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: none;
+  width: 40px;
+  height: 40px;
 }
 
-main.encrypt .encrypt-body label.password > span svg {
-  width: 30px;
-  height: 30px;
+main.encrypt .encrypt-body label.password > button svg {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 main.encrypt .encrypt-body .error {
