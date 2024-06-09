@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { DATA } from '../../utils/constants'
+import { useNavigate } from 'react-router-dom'
+import { DATA, MODE } from '../../utils/constants'
 import { validatePassword } from '../../utils/helpers'
 
 import Logo from '../../components/svg/Logo'
@@ -26,10 +27,24 @@ import './decrypt.css'
 const Decrypt = () => {
   const [data, setData] = useState(DATA)
 
+  const navigate = useNavigate()
+
   const { step, next, back, reset, currentStep, isFirstStep, isLastStep } = useEncryption([
-    <UploadFile key={0} {...data} setData={setData} title="Upload Encrypted File" />,
+    <UploadFile
+      key={0}
+      {...data}
+      setData={setData}
+      title="Upload Encrypted File"
+      mode={MODE.DECRYPT}
+    />,
     <InsertKey key={1} {...data} setData={setData} title="Provide Decryption Key" />,
-    <SaveFile key={2} {...data} setData={setData} title="Save Decrypted File" />,
+    <SaveFile
+      key={2}
+      {...data}
+      setData={setData}
+      title="Save Decrypted File"
+      mode={MODE.DECRYPT}
+    />,
     <Finish key={3} title="Finish Decryption" />
   ])
 
@@ -39,13 +54,18 @@ const Decrypt = () => {
    * @param {Event} event - The form submission event.
    * @return {void}
    */
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (currentStep === 1) {
       if (validatePassword(data.fileKey)) {
         setData((prev) => ({ ...prev, keyError: validatePassword(data.fileKey) }))
         return
       } else {
+        setData((prev) => ({
+          ...prev,
+          saveError: null,
+          encrytedFile: true
+        }))
         return next()
       }
     }
@@ -55,11 +75,13 @@ const Decrypt = () => {
         setData((prev) => ({ ...prev, saveError: 'Please save the encrypted file first' }))
         return
       }
+
       setData((prev) => ({ ...prev, saveError: null }))
       return next()
     }
     if (isLastStep) {
       setData(DATA)
+      navigate('/')
       return reset()
     }
     return next()
