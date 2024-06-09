@@ -1,14 +1,25 @@
-import { ACCEPTED_FILE_TYPES, MIN_PASSWORD_LENGTH } from './constants'
+import {
+  ACCEPTED_DECRYPTION_FILE_TYPES,
+  ACCEPTED_ENCRYPTION_FILE_TYPES,
+  MIN_PASSWORD_LENGTH,
+  MODE
+} from './constants'
 
 /**
- * Validates a file based on its extension.
+ * Validates a file based on the specified mode.
  *
  * @param {File} file - The file to be validated.
- * @return {boolean} Returns true if the file extension is in the list of accepted file types, false otherwise.
+ * @param {string} mode - The mode of validation (ENCRYPT or DECRYPT).
+ * @return {boolean} Returns true if the file extension is valid for the specified mode, otherwise false.
  */
-export const validateFile = (file) => {
+export const validateFile = (file, mode) => {
   const fileExtension = file.name.split('.').pop().toLowerCase()
-  return ACCEPTED_FILE_TYPES.includes(fileExtension)
+
+  if (mode === MODE.ENCRYPT) return ACCEPTED_ENCRYPTION_FILE_TYPES.includes(fileExtension)
+
+  if (mode === MODE.DECRYPT) return ACCEPTED_DECRYPTION_FILE_TYPES.includes(fileExtension)
+
+  return false
 }
 
 /**
