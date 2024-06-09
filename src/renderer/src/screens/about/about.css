@@ -53,18 +53,21 @@ section.about p span {
   color: var(--secondary-color);
 }
 
-section.about a {
+section.about a,
+section.about button {
   margin-top: 2rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-section.about a svg {
+section.about a svg,
+section.about button svg {
   width: 20px;
   height: 20px;
 }
 
-section.about a svg g {
+section.about a svg g,
+section.about button svg g {
   fill: var(--primary-color);
 }
