@@ -194,6 +194,11 @@ main.encrypt .encrypt-body div.enc-file button {
   cursor: pointer;
 }
 
+main.encrypt .encrypt-body div.enc-file button.saved {
+  color: var(--text-color);
+  background: green;
+}
+
 main.encrypt .encrypt-body label.file span svg,
 main.encrypt .encrypt-body div.enc-file button svg {
   width: 30px;
@@ -203,6 +208,10 @@ main.encrypt .encrypt-body div.enc-file button svg {
 main.encrypt .encrypt-body label.file span svg path,
 main.encrypt .encrypt-body div.enc-file button svg path {
   stroke: var(--primary-color);
+}
+
+main.encrypt .encrypt-body div.enc-file button.saved svg path {
+  stroke: var(--text-color);
 }
 
 main.encrypt .encrypt-body label.file input {
