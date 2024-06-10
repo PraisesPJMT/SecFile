@@ -10,6 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "build": "electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
@@ -36,6 +38,7 @@
     "prettier": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "vite": "^5.0.12"
+    "vite": "^5.0.12",
+    "vitest": "^1.6.0"
   }
 }
