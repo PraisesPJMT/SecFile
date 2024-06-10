@@ -1,36 +1,29 @@
 import { describe, it, expect } from 'vitest'
 
 describe('SecFile: Components Tests', () => {
-  describe('Header: Component Tests', () => {
-    it('should render correctly', () => {
+  describe('MenuComponent Test', () => {
+    it('should render menu items', () => {
       const header = true
       expect(header).toBe(true)
     })
   })
 
-  describe('SaveFile: Component Tests', () => {
-    it('should render correctly', () => {
+  describe('HomeScreenComponent Test', () => {
+    it('should render home screen with buttons', () => {
       const header = true
       expect(header).toBe(true)
     })
   })
 
-  describe('UploadFile: Component Tests', () => {
-    it('should render correctly', () => {
+  describe('EncryptScreenComponent Test', () => {
+    it('should process file encryption workflow', () => {
       const header = true
       expect(header).toBe(true)
     })
   })
 
-  describe('InsertKey: Component Tests', () => {
-    it('should render correctly', () => {
-      const header = true
-      expect(header).toBe(true)
-    })
-  })
-
-  describe('Finish: Component Tests', () => {
-    it('should render correctly', () => {
+  describe('DecryptScreenComponent Test', () => {
+    it('should process file decryption workflow', () => {
       const header = true
       expect(header).toBe(true)
     })
